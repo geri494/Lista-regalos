@@ -1,0 +1,97 @@
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo con degradado animado */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f9f7f7, #dbe2ef, #a3cef1);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: #333;
+    display: flex;
+    justify-content: flex-start; /* 👈 alineamos hacia la izquierda */
+    min-height: 100vh;
+    padding: 60px 20px;
+}
+
+/* Animación del fondo */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Contenedor de la lista */
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    width: 90%;
+    max-width: 650px;
+    margin-left: 400px; /* 👈 Esto lo empuja un poco a la derecha */
+}
+
+/* Título */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #5a5a5a;
+}
+
+/* Lista */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Elementos de la lista */
+li {
+    font-size: 1.rem;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilo al pasar el mouse */
+li:hover {
+    background-color: #e0f7fa;
+}
+
+/* Tooltip interactivo para mostrar el texto completo */
+li::after {
+    content: attr(data-fulltext);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: normal;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    max-width: 250px;
+}
+
+/* Mostrar el tooltip al pasar el mouse */
+li:hover::after {
+    opacity: 1;
+}
